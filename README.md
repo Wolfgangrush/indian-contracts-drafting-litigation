@@ -358,7 +358,7 @@ Indian advocates, in-house counsel, and transactional lawyers are invited to con
 
 Open a GitHub issue with the contribution. Pull requests welcome.
 
-This plugin is open source under MIT. No proprietary gating. No login. No telemetry. No tracking of who uses the plugin or what deals they execute.
+This plugin is open source under MIT.
 
 ---
 
