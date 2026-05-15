@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Real case files — NEVER commit any client-derived material
+EXAMPLES/raw/
+EXAMPLES/*-decoded*
+EXAMPLES/*-real*
+*.real
+*-redacted-from-real-*
+
+# Build records and provenance notes — these stay local-only
+docs/BUILD_PLAN*.md
+docs/BUILD_NOTES*.md
+docs/build-log*.md
+_private*/
+_internal*/
+
+# Drafts in progress (these belong in user's case folder, not the plugin)
+draft-v*.docx
+draft-v*.md
+deal-facts.md
+verification-report.md
+opposing-notes.md
+format-shell.md
+contract-config.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Local Claude config
+.claude/local/
