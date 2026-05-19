@@ -6,6 +6,10 @@
 >
 > Released under MIT. Open infrastructure for the legal community. No commercial engagement offered through this repository — see Disclaimer below.
 
+> ⚠️ **AI can make mistakes. Always verify the output.**
+>
+> This software generates assistive drafts and suggestions only. Every legal claim, citation, statute reference, procedural step, deadline calculation, and ground of relief must be independently verified by a qualified human practitioner before filing, advising a client, or relying on the output. The publisher accepts no liability for outputs used without verification.
+
 ---
 
 ## Table of contents
