@@ -10,6 +10,9 @@
 >
 > This software generates assistive drafts and suggestions only. Every legal claim, citation, statute reference, procedural step, deadline calculation, and ground of relief must be independently verified by a qualified human practitioner before filing, advising a client, or relying on the output. The publisher accepts no liability for outputs used without verification.
 
+> 🛡️ **Privacy primitive (ecosystem):** PII pseudonymisation across the Wolfgang Rush legal-tech family is handled via [pseudonymisation-gateway](https://github.com/Wolfgangrush/pseudonymisation-gateway) (MIT). When this drafting plugin is used inside an AI Law Firm built on that gateway, client PII is stripped before any cloud-LLM call and restored on response.
+
+
 ---
 
 ## Table of contents
