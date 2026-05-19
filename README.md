@@ -346,7 +346,7 @@ Indian contract practice sits at the intersection of (a) the substantive law in 
 
 Generic AI tools do not understand this matrix. They confuse Lease with Leave & License (substantial cost-of-registration difference), miss the Section 16(c) Specific Relief Act averment in performance suits, draft GPA-Sale instruments that have been disapproved by the Supreme Court for over a decade, omit DPDP flowdowns from data-handling contracts, write arbitration clauses that fail BALCO seat-vs-venue scrutiny, and confidently cite case-law that does not exist.
 
-This plugin encodes the Indian contract regime structurally. It is most-deeply-validated for the Maharashtra State Stamp Act + Indian Contract Act core; other States' stamp-and-registration overlays will deepen as community contribution arrives.
+This plugin encodes the Indian contract regime structurally.
 
 ---
 
