@@ -397,6 +397,44 @@ See [`NOTICE.md`](./NOTICE.md) for the full provenance and privilege statement.
 
 ---
 
+## Compliance posture — Supreme Court e-Committee AI framework
+
+This plugin is **assistive drafting infrastructure**, not autonomous decision-making software. Its operational posture is aligned with the Supreme Court of India e-Committee's stated position on AI in legal work.
+
+> *"AI and digital tools must be used as supportive instruments and should not be allowed to override judicial reasoning."*
+>
+> — **Justice Rajesh Bindal**, Judge, Supreme Court of India
+> [*Judicial Process Re-engineering and Digital Transformation*](https://www.sci.gov.in/press-release-dated-april-12-2026/) conference, 11–12 April 2026
+> Organised by the Supreme Court e-Committee in collaboration with the Department of Justice, Government of India.
+> ([Coverage — Law Trend](https://lawtrend.in/ai-must-not-replace-judicial-reasoning-warns-supreme-court-justice-rajesh-bindal/))
+
+The same posture underpins the Supreme Court's own AI infrastructure for the judiciary:
+
+- **[SUPACE](https://www.drishtiias.com/daily-news-analysis/ai-portal-supace)** — *Supreme Court Portal for Assistance in Court Efficiency.* AI-enabled assistive tool launched on 6 April 2021 by then-CJI S.A. Bobde. Provides legal research, fact extraction, document review, and drafting assistance to judges and legal researchers. **By design, SUPACE is not a decision-making system** — it processes facts and surfaces them to the human user. The Supreme Court has recommended adoption across all Indian High Courts.
+
+- **[SUVAS](https://www.drishtijudiciary.com/current-affairs/supreme-court-vidhik-anuvaad-software-suvas)** — *Supreme Court Vidhik Anuvaad Software.* AI-powered translation tool launched in November 2019 by then-CJI S.A. Bobde. Translates judicial documents, orders, and judgments between English and ten Indian regional languages.
+
+### What this plugin does — and does not — do under that framework
+
+**Does:**
+
+- Generate structural skeletons of pleadings, drawing on public statutes, schedule forms, and court rules.
+- Run a six-agent assistive pipeline (Reader → Formatter → Drafter → Verifier → Refiner → Overseer) over the user's case facts.
+- Surface citations, procedural anchors, and bench-specific conventions for advocate review.
+
+**Does NOT:**
+
+- Generate final filings autonomously.
+- Substitute for advocate professional judgment.
+- Replace human verification.
+- Operate without an enrolled advocate retaining full professional responsibility.
+
+**Every draft produced through this plugin must be advocate-owned and human-verified before filing.** The enrolled advocate using this plugin retains full professional responsibility under the Advocates Act 1961 and the Bar Council of India Rules, including verification of facts, accuracy of citations, correctness of legal grounds, propriety of the prayer, and signature on every pleading filed.
+
+This is the same standard the Supreme Court itself applies to its own AI infrastructure (SUPACE / SUVAS): **AI as supportive instrument, never as decision-maker.**
+
+---
+
 ## Disclaimer and Bar Council of India Rule 36 compliance
 
 This plugin is **open-source infrastructure released free of cost** under the MIT licence.
