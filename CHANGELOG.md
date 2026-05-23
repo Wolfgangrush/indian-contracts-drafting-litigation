@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ---
 
+## [0.2.2-alpha] — 2026-05-24
+
+### Transactional-instrument reference.docx + output-pairing discipline
+
+This plugin produces transactional instruments (contracts / conveyancing deeds), not pleadings. The v0.2.1 reference.docx wrongly applied the Bombay HC Nagpur pleading style (TNR 14pt 1.5 spacing, spaced + UNDERLINED bold-centered section headers, "MOST RESPECTFULLY SHEWETH:" anchor) — wholly inappropriate for commercial documents. v0.2.2 ships a correctly-calibrated transactional reference.docx.
+
+### Added
+
+- **Transactional `reference.docx`** at `skills/<base>/reference.docx` — TNR 12pt body, single line spacing, 2.5cm margins all around, Heading 1 bold centered (NOT underlined) for document title, Heading 2 bold left for section titles (e.g., "1. DEFINITIONS"), Heading 3 bold italic left for sub-sections, Heading 4 italic left for sub-sub-sections. No spaced section headers. No underlining of headings. Page numbers bottom-center.
+- **`build_reference_docx.py`** (transactional variant) — reproducible build script for the transactional reference.docx.
+- **`pair_md_to_docx.sh`** — helper script that every agent calls after writing a `.md` output. Pairs every Markdown artifact with a `.docx` using the shipped reference.docx + the post-pandoc table-width fix.
+- **OUTPUT-PAIRING DISCIPLINE** section in `_drafting_common/SKILL.md` documenting the per-agent output-pairing map and the helper-script usage.
+
+### Changed
+
+- **reference.docx style** for transactional instruments is now correctly differentiated from pleading style. Pleading-style v0.2.1 reference.docx is REMOVED from this plugin and replaced with the transactional variant.
+- **Pipeline output convention** — every agent's `.md` output is now paired with a `.docx`. Advocates do not natively read Markdown; every artifact is opened in Word.
+
+### Migration
+
+Any existing case folders that produced output under v0.2.1 should re-run the Drafter to produce the corrected `.docx` files in the transactional style. The `.md` source files remain unchanged.
+
+---
+
 ## [0.2.1-alpha] — 2026-05-24
 
 ### Filing-grade render-defect repair + pipeline-optionality

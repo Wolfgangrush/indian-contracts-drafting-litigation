@@ -164,3 +164,45 @@ INDEX, SYNOPSIS, LIST OF ANNEXURES each begin on a new page (`\newpage` in Markd
 The full 6-agent pipeline (Reader → Format → Drafter → Verifier → Refiner → Overseer) is **NOT** mandatory. Only the first three stages are required to produce a filing-grade draft. Stages 4–6 are OPTIONAL QC layers the advocate explicitly invokes. Default exit point is here, after Drafter (~280K tokens). Full pipeline ~600K tokens — disproportionate for routine pleadings.
 
 When `draft-v1.docx` is written, the Drafter's job is complete. The advocate decides whether to invoke the QC stages.
+
+
+---
+
+## v0.2.2 OUTPUT-PAIRING DISCIPLINE (load-bearing — every agent must follow)
+
+**Every `.md` output artifact MUST be paired with a `.docx`.** Advocates do not natively read Markdown — they read Word. Every pipeline output (case-facts.md from Reader, format-shell.md from Format, draft-v1.md from Drafter, verification-report.md from Verifier, draft-v2.md from Refiner, opposing-notes.md from Overseer) must have a corresponding `.docx` rendered with the same locked Word styles.
+
+**This plugin produces transactional instruments (contracts / conveyancing deeds)** — the shipped reference.docx is the transactional variant (TNR 12pt single-spaced, no spaced section headers, no underline on headings). The output-pairing rule below still applies.
+
+### How to produce the paired `.docx`
+
+Every agent runs the shipped helper script as its final post-`.md`-write step:
+
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/skills/_contract_drafting_base/pair_md_to_docx.sh" <output.md>
+```
+
+The helper:
+1. Resolves the reference.docx in `${CLAUDE_PLUGIN_ROOT}/skills/_contract_drafting_base/reference.docx`
+2. Runs pandoc with `--reference-doc` and `--from=markdown+pipe_tables+raw_tex` to produce the `.docx`
+3. Runs the shipped `fix_docx_tables.py` to force column widths on every table
+
+For overriding (e.g., a per-case-folder reference.docx), pass the reference.docx as the second argument:
+
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/skills/_contract_drafting_base/pair_md_to_docx.sh" \
+    <output.md> <case-folder>/reference.docx
+```
+
+### Per-agent output-pairing map
+
+| Agent | `.md` output | Paired `.docx` |
+|---|---|---|
+| Reader | `case-facts.md` | `case-facts.docx` |
+| Format | `format-shell.md` | `format-shell.docx` |
+| Drafter | `draft-v1.md` | `draft-v1.docx` |
+| Verifier | `verification-report.md` | `verification-report.docx` |
+| Refiner | `draft-v2.md` | `draft-v2.docx` |
+| Overseer | `opposing-notes.md` + `final-draft.md` | `opposing-notes.docx` + `final-draft.docx` |
+
+Every agent calls `pair_md_to_docx.sh` once for each `.md` it writes. Skipping this step leaves the advocate with `.md` files that cannot be opened natively in Word.
