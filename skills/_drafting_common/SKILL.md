@@ -109,3 +109,58 @@ For any contract with an arbitration clause, the Verifier checks:
 - **Section 11** vs **Section 9** — interim measures jurisdiction acknowledged
 - **Stamping** — arbitration agreement on appropriate stamp under the State Stamp Act
 - For **cross-border deals** — *PASL Wind Solutions* applicability check (two Indian parties choosing foreign seat is now permissible)
+
+
+---
+
+## v0.2.1 RENDER DISCIPLINE (load-bearing — Drafter must follow)
+
+**Pandoc + reference.docx + post-pandoc fix script.** The Drafter writes Markdown using the heading discipline below. Pandoc converts the Markdown to `.docx` using the SHIPPED reference.docx at `${CLAUDE_PLUGIN_ROOT}/skills/_contract_drafting_base/reference.docx` — pre-customised with locked Word styles matching the filing-grade Bombay HC Nagpur convention (extracted from an actual filed Second Appeal pleading):
+
+- **Body (Normal)** — TNR 14pt, 1.5 line spacing, justified, 0.5cm first-line indent
+- **Heading 1** — TNR 14pt **bold + centered** (NOT underlined) — for the Court / Forum / Tribunal header line and the case-number line
+- **Heading 2** — TNR 14pt **bold + UNDERLINED + centered + letter-spacing** — for spaced section headers (`F A C T S`, `G R O U N D S`, `P R A Y E R`, `I N D E X`, `S Y N O P S I S`, `L I S T   O F   A N N E X U R E S`, `V E R I F I C A T I O N`)
+- **Heading 3** — TNR 14pt **bold + UNDERLINED + centered** — for unspaced section headers (`SUBSTANTIAL QUESTIONS OF LAW`, `ACTS & RULES`, `CITATIONS`) and statutory opening (`WRIT PETITION UNDER ARTICLE 226 …`)
+- **Heading 4** — TNR 14pt **bold + UNDERLINED + left-aligned** — for left-anchored bold-underlined headings (`MOST RESPECTFULLY SHEWETH:`)
+- **Tables** — `tblLayout = fixed`; first row bold centered; cell margins locked
+
+### Markdown heading mapping
+
+| Markdown | Rendered as | Used for |
+|---|---|---|
+| `# Heading 1` | Bold centered (no underline) | Court header line; case-number line; cover-page anchors |
+| `## Heading 2` | Bold centered UNDERLINED with letter-spacing | Spaced section headers (`## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N`) |
+| `### Heading 3` | Bold centered UNDERLINED | Unspaced section headers + statutory opening |
+| `#### Heading 4` | Bold left UNDERLINED | `#### MOST RESPECTFULLY SHEWETH:` |
+| Body paragraph | TNR 14pt justified 1.5 spacing 0.5cm first-line indent | Everything else |
+| `**Bold inline**` | Bold | Property descriptors / annexure markers / key terms inline within Facts narrative |
+
+### Bold-number paragraph convention
+
+Facts and Grounds paragraphs use **BOLD NUMBERS**: `**1.**`, `**2.**`, `**3.**` followed by a tab + body. Renders as the gold-standard pleading layout.
+
+### Two-step pandoc command (Step 2 is NON-NEGOTIABLE)
+
+```bash
+# Step 1 — pandoc → .docx with locked Word styles
+pandoc draft-v1.md -o draft-v1.docx \
+  --reference-doc="${CLAUDE_PLUGIN_ROOT}/skills/_contract_drafting_base/reference.docx" \
+  --from=markdown+pipe_tables+raw_tex
+
+# Step 2 — force table column widths
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/_contract_drafting_base/fix_docx_tables.py" draft-v1.docx
+```
+
+Step 2 forces column widths on every table — 5-col (Sr.No / Annx / Particulars / Date / Pgs) = 8/8/60/14/10; 4-col = 10/10/65/15; 3-col = 10/75/15; 2-col Dates–Events = 18/82. Locks first-row bold + centered + vertically-centered cells. **Skipping the fix script reproduces the v0.2.0 Index-table defect (Sr.No / Annx columns stacking vertically).**
+
+Do NOT auto-generate a fresh reference.docx in the case folder. Use the shipped one or a `<case-folder>/reference.docx` override.
+
+### Cover-page discipline
+
+INDEX, SYNOPSIS, LIST OF ANNEXURES each begin on a new page (`\newpage` in Markdown) and carry ONLY: forum header (`#`) + case-number line (`#`) + short cause-title (Petitioner short name `///VERSUS///` Respondent short name) + section header (`##`) + table + Counsel block. DO NOT repeat the full party address block on cover pages.
+
+### Pipeline-optionality (advocate-cost discipline)
+
+The full 6-agent pipeline (Reader → Format → Drafter → Verifier → Refiner → Overseer) is **NOT** mandatory. Only the first three stages are required to produce a filing-grade draft. Stages 4–6 are OPTIONAL QC layers the advocate explicitly invokes. Default exit point is here, after Drafter (~280K tokens). Full pipeline ~600K tokens — disproportionate for routine pleadings.
+
+When `draft-v1.docx` is written, the Drafter's job is complete. The advocate decides whether to invoke the QC stages.
