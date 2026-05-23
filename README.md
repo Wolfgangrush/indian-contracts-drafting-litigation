@@ -13,6 +13,21 @@
 > 🛡️ **Privacy primitive — Reader agent invokes the gateway:** This drafting plugin's **Reader agent** (the first agent in the 6-agent pipeline) calls [pseudonymisation-gateway](https://github.com/Wolfgangrush/pseudonymisation-gateway) (MIT · Wolfgang Rush) on the user's case folder BEFORE any cloud-LLM call. Real client names · government IDs · case numbers · phone numbers · currency amounts are replaced with placeholders (`[PERSON_1]` · `[AADHAAR_1]` · `[CASE_NO_1]` · etc.) in a session-scoped in-memory token map that never touches disk. Downstream agents (Format · Drafter · Verifier · Refiner) work entirely on the sanitized text. The **Overseer agent** (the final agent) calls `desanitize()` to restore real values in the final pleading before it reaches the file system. Cloud LLM vendors never see your client's real PII.
 
 
+## 🚀 Install — Wolfgang Rush marketplace
+
+This plugin is part of the [Wolfgang Rush plugin family](https://github.com/Wolfgangrush/wolfgang-rush-marketplace) — 14 Indian-court drafting plugins distributed via one Claude Code marketplace.
+
+**Via Claude Code (CLI) — recommended for the plugin family:**
+
+```bash
+/plugin marketplace add Wolfgangrush/wolfgang-rush-marketplace
+/plugin install indian-contracts-drafting@wolfgang-rush
+```
+
+**Via Claude Desktop:** see the [Installation](#installation) section below for the `.zip` upload flow.
+
+---
+
 ---
 
 ## Table of contents
