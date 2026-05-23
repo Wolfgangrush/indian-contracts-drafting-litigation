@@ -1,0 +1,32 @@
+name: Validate plugin manifest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate plugin.json schema
+        run: |
+          python3 -c "
+          import json, sys
+          with open(\"./.claude-plugin/plugin.json\") as f:
+              p = json.load(f)
+          errors = []
+          required_keys = [\"name\", \"version\", \"description\"]
+          for k in required_keys:
+              if k not in p:
+                  errors.append(f\"Missing required key: {k}\")
+          if \"repository\" in p and not isinstance(p[\"repository\"], str):
+              errors.append(f\"repository field must be string, got {type(p[\"repository\"]).__name__}\")
+          if errors:
+              print(\"\n\".join(errors))
+              sys.exit(1)
+          print(f\"✔ plugin.json valid: {p[\"name\"]}@{p[\"version\"]}\")
+          "
+
