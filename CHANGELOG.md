@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ---
 
+## [0.2.3-alpha] — 2026-05-25
+
+### Explicit per-agent invocation of `pair_md_to_docx.sh`
+
+v0.2.2 documented the output-pairing rule in `_drafting_common/SKILL.md` and relied on every agent picking up the rule by reference. v0.2.3 makes the invocation EXPLICIT in each agent's prompt — Reader, Format, Drafter, Verifier, Refiner, Overseer — so the pairing happens deterministically rather than depending on inherited-rule compliance.
+
+### Changed
+
+- **Reader prompt** — after writing `case-facts.md`, explicit `pair_md_to_docx.sh case-facts.md` invocation appended.
+- **Format prompt** — after writing `format-shell.md`, explicit invocation appended.
+- **Drafter prompt** — explicit invocation appended (Drafter already had a pandoc command from v0.2.1; the helper invocation is now also documented as the canonical path).
+- **Verifier prompt** — after writing `verification-report.md`, explicit invocation appended.
+- **Refiner prompt** — after writing `draft-v2.md`, explicit invocation appended.
+- **Overseer prompt** — after writing `opposing-notes.md` and `final-draft.md`, two explicit invocations appended.
+
+### Why the change
+
+User feedback 2026-05-25: relying on each agent to inherit the rule from `_drafting_common` is not robust enough. The Drafter has the pandoc command spelled out and it works; the other 5 agents had only the inherited rule. Explicit per-agent invocation makes the pairing deterministic. Once every agent reliably outputs both `.md` and `.docx`, a pipeline run on any forum becomes itself a calibration probe — the advocate visually inspects the rendered `.docx` from each stage and identifies any per-forum formatting gaps, without needing 14 separate gold-standard pleadings upfront.
+
+---
+
 ## [0.2.2-alpha] — 2026-05-24
 
 ### Transactional-instrument reference.docx + output-pairing discipline
