@@ -1,0 +1,52 @@
+description = "Run the full 6-agent Indian Contracts and Conveyancing Drafting pipeline on a case folder."
+
+prompt = """
+# Full Pipeline — Indian Contracts and Conveyancing Drafting (Gemini CLI)
+
+Run the complete 6-agent drafting pipeline on a case folder. Sequential execution: each stage's output is the next stage's input.
+
+## User-supplied case folder
+
+```
+{{args}}
+```
+
+If empty, ask: "Which case folder? (provide path)"
+
+## Pipeline
+
+| Stage | Agent | Input | Output |
+|-------|-------|-------|--------|
+| 1 | Reader | case folder + laws/ subfolder | case-facts.md |
+| 2 | Format | case-facts.md + contract-config.md | format-shell.md |
+| 3 | Drafter | case-facts.md + format-shell.md | draft-v1.docx |
+| 4 | Verifier | draft-v1.docx + case-facts.md | verification-report.md |
+| 5 | Refiner | draft-v1.docx + verification-report.md | draft-v2.docx |
+| 6 | Overseer | draft-v2.docx (opposing-counsel lens) | opposing-notes.md + final-draft.docx |
+
+## Execution
+
+Run each stage by invoking the matching slash command in sequence. STOP conditions:
+- Reader: missing required law PDF → STOP, ask user to supply
+- Format: contract-config.md missing or incomplete → STOP
+- Verifier: hallucinated dates / fabricated citations / orphan annexures detected → STOP, re-run Drafter with corrections
+- Overseer: attackable defect in prayer / contradictory facts / missing limb of argument → flag for user review
+
+## Forum / jurisdiction context
+
+**Forum:** Transactional documents — no forum (governing-law / arbitration-seat / exclusive-jurisdiction clauses parametrised via contract-config)
+**Case types:** Sale Agreement · Service Agreement · NDA · Employment Agreement · Shareholders Agreement · LLP Agreement · Lease Deed · Power of Attorney · Will · Gift Deed · Settlement Deed · Master Services Agreement · Franchise Agreement · Joint Venture Agreement · Slump Sale Agreement
+
+## Privacy posture
+
+- Gemini PAID tier for non-client work
+- Local Ollama for real client matters under BCI Rule 17
+- **Never Gemini free tier for client data** (prompts go to training)
+
+## Output discipline (every stage)
+
+- AI-drafted. Verify before filing.
+- Advocate retains full professional responsibility under Advocates Act 1961.
+- Every citation verified on SCC OnLine / Manupatra / IndianKanoon before inclusion.
+- Every statutory section verified pre/post 1 July 2024 (BNS / BNSS / BSA transition).
+"""
