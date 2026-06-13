@@ -10,12 +10,12 @@
 >
 > This software generates assistive drafts and suggestions only. Every legal claim, citation, statute reference, procedural step, deadline calculation, and ground of relief must be independently verified by a qualified human practitioner before filing, advising a client, or relying on the output. The publisher accepts no liability for outputs used without verification.
 
-> 🛡️ **Privacy primitive — Reader agent invokes the gateway:** This drafting plugin's **Reader agent** (the first agent in the 6-agent pipeline) calls [pseudonymisation-gateway](https://github.com/Wolfgangrush/pseudonymisation-gateway) (MIT · Wolfgang Rush) on the user's case folder BEFORE any cloud-LLM call. Real client names · government IDs · case numbers · phone numbers · currency amounts are replaced with placeholders (`[PERSON_1]` · `[AADHAAR_1]` · `[CASE_NO_1]` · etc.) in a session-scoped in-memory token map that never touches disk. Downstream agents (Format · Drafter · Verifier · Refiner) work entirely on the sanitized text. The **Overseer agent** (the final agent) calls `desanitize()` to restore real values in the final pleading before it reaches the file system. Cloud LLM vendors never see your client's real PII.
+> 🛡️ **Privacy primitive — Reader agent invokes the gateway:** This drafting plugin's **Reader agent** (the first agent in the 6-agent pipeline) calls [pseudonymisation-gateway](https://github.com/Wolfgangrush/pseudonymisation-gateway) (MIT · wolfgang_rush) on the user's case folder BEFORE any cloud-LLM call. Real client names · government IDs · case numbers · phone numbers · currency amounts are replaced with placeholders (`[PERSON_1]` · `[AADHAAR_1]` · `[CASE_NO_1]` · etc.) in a session-scoped in-memory token map that never touches disk. Downstream agents (Format · Drafter · Verifier · Refiner) work entirely on the sanitized text. The **Overseer agent** (the final agent) calls `desanitize()` to restore real values in the final pleading before it reaches the file system. Cloud LLM vendors never see your client's real PII.
 
 
-## 🚀 Install — Wolfgang Rush marketplace
+## 🚀 Install — wolfgang_rush marketplace
 
-This plugin is part of the [Wolfgang Rush plugin family](https://github.com/Wolfgangrush/wolfgang-rush-marketplace) — 14 Indian-court drafting plugins distributed via one Claude Code marketplace.
+This plugin is part of the [wolfgang_rush plugin family](https://github.com/Wolfgangrush/wolfgang-rush-marketplace) — 14 Indian-court drafting plugins distributed via one Claude Code marketplace.
 
 **Via Claude Code (CLI) — recommended for the plugin family:**
 
@@ -333,7 +333,7 @@ Indian advocates, in-house counsel, and the mid-market law firms that draft the 
 
 ## Sibling plugins
 
-This plugin is one in the **Wolfgang Rush** family of Indian legal-drafting plugins. All thirteen siblings ship under the same six-agent pipeline (Reader → Format → Drafter → Verifier → Refiner → Overseer) and the family-of-plugins doctrine — each plugin narrowly scoped to one practice area / forum:
+This plugin is one in the **wolfgang_rush** family of Indian legal-drafting plugins. All thirteen siblings ship under the same six-agent pipeline (Reader → Format → Drafter → Verifier → Refiner → Overseer) and the family-of-plugins doctrine — each plugin narrowly scoped to one practice area / forum:
 
 | Plugin | GitHub repo | Scope |
 |---|---|---|
@@ -405,9 +405,9 @@ This project does not have an email contact channel and **does not accept privat
 
 ## Author and brand
 
-This plugin is authored by **Rushikesh R. Mahajan**, Advocate, enrolled with the Bar Council of Maharashtra and Goa, practising before the Bombay High Court (Nagpur Bench).
+This plugin is authored by **Rushikesh R. Mahajan**, Advocate, enrolled with the Bar Council of Maharashtra and Goa, practising before the High Courts of India.
 
-The plugin is published under the **Wolfgang Rush** open-source brand — the author's publishing handle for legal-technology infrastructure. All commits to this repository are signed under the Wolfgang Rush GitHub identity. The real-identity declaration appears here, and again in `NOTICE.md`, so that the Bar Council Rule 36 accountability mechanism (advocate-as-individual responsibility) is preserved transparently rather than displaced by the publishing handle.
+The plugin is published under the **wolfgang_rush** open-source brand — the author's publishing handle for legal-technology infrastructure. All commits to this repository are signed under the wolfgang_rush GitHub identity. The real-identity declaration appears here, and again in `NOTICE.md`, so that the Bar Council Rule 36 accountability mechanism (advocate-as-individual responsibility) is preserved transparently rather than displaced by the publishing handle.
 
 ---
 
@@ -483,4 +483,4 @@ This plugin is **open-source infrastructure released free of cost** under the MI
 
 **MIT.** See [`LICENSE`](./LICENSE) for the full text.
 
-Copyright (c) 2026 Wolfgang Rush. Authored by Rushikesh R. Mahajan, Advocate, publishing under the Wolfgang Rush open-source brand.
+Copyright (c) 2026 Rushikesh R. Mahajan (publishing as wolfgang_rush). Authored by Rushikesh R. Mahajan, Advocate, publishing under the wolfgang_rush open-source brand.

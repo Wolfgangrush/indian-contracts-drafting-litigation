@@ -31,7 +31,7 @@ User feedback 2026-05-25: relying on each agent to inherit the rule from `_draft
 
 ### Transactional-instrument reference.docx + output-pairing discipline
 
-This plugin produces transactional instruments (contracts / conveyancing deeds), not pleadings. The v0.2.1 reference.docx wrongly applied the Bombay HC Nagpur pleading style (TNR 14pt 1.5 spacing, spaced + UNDERLINED bold-centered section headers, "MOST RESPECTFULLY SHEWETH:" anchor) — wholly inappropriate for commercial documents. v0.2.2 ships a correctly-calibrated transactional reference.docx.
+This plugin produces transactional instruments (contracts / conveyancing deeds), not pleadings. The v0.2.1 reference.docx wrongly applied the High Courts of India pleading style (TNR 14pt 1.5 spacing, spaced + UNDERLINED bold-centered section headers, "MOST RESPECTFULLY SHEWETH:" anchor) — wholly inappropriate for commercial documents. v0.2.2 ships a correctly-calibrated transactional reference.docx.
 
 ### Added
 
@@ -55,7 +55,7 @@ Any existing case folders that produced output under v0.2.1 should re-run the Dr
 
 ### Filing-grade render-defect repair + pipeline-optionality
 
-The v0.1.0 render path produced filing-grade Markdown but the pandoc → `.docx` conversion failed Bombay HC / equivalent Registry expectations on multiple counts (title not bold, section headers left-aligned, Index table column-headers wrapping vertically, party block leaking onto cover pages, ~6,200-word bloat). This release repairs the render path, calibrated against an actual filed Bombay HC Nagpur Second Appeal pleading the author supplied as the filing-grade reference. Inherits the v0.2.1 fixes from `indian-hc-drafting-litigation`.
+The v0.1.0 render path produced filing-grade Markdown but the pandoc → `.docx` conversion failed Bombay HC / equivalent Registry expectations on multiple counts (title not bold, section headers left-aligned, Index table column-headers wrapping vertically, party block leaking onto cover pages, ~6,200-word bloat). This release repairs the render path, calibrated against an actual filed High Courts of India Second Appeal pleading the author supplied as the filing-grade reference. Inherits the v0.2.1 fixes from `indian-hc-drafting-litigation`.
 
 ### Added
 
@@ -107,4 +107,4 @@ This is a **v0.1.0-alpha scaffold release**. The structural skeletons, agent pip
 
 ### Released under
 
-MIT License. Authored by Rushikesh R. Mahajan, Advocate, publishing under the Wolfgang Rush open-source brand for legal-tech infrastructure.
+MIT License. Authored by Rushikesh R. Mahajan, Advocate, publishing under the wolfgang_rush open-source brand for legal-tech infrastructure.

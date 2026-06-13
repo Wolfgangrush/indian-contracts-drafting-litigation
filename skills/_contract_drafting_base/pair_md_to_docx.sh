@@ -2,7 +2,7 @@
 # pair_md_to_docx.sh — convert a Markdown output artifact to a paired .docx
 # using the shipped reference.docx + the post-pandoc table-width fix script.
 #
-# Used by every agent in the Wolfgang Rush drafting pipeline (Reader, Format,
+# Used by every agent in the wolfgang_rush drafting pipeline (Reader, Format,
 # Drafter, Verifier, Refiner, Overseer) to ensure every .md output has a paired
 # .docx the advocate can open in Word.
 #

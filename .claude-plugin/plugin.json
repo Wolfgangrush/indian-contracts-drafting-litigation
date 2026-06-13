@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha",
   "description": "Open-source Claude-compatible plugin for drafting Indian contracts, conveyancing instruments, and personal-estate documents. Contract-config-aware design \u2014 the plugin's structural skeleton is uniform across contract types, and the parties' chosen governing law, chosen seat of arbitration, chosen courts of exclusive jurisdiction, stamp-duty State, and registration State are supplied by the user via a contract-config file. Drafting workflows for Master Service Agreement, Non-Disclosure Agreement, Employment Agreement + Independent Contractor, Lease Deed and Leave & License, Sale Deed of immovable property, General and Special Power of Attorney (post-Suraj Lamp discipline), Shareholders Agreement (Companies Act 2013 + AoA alignment), Last Will and Testament, Loan Agreement, and standalone Arbitration Agreement. Includes the 6-agent drafting pipeline (Reader -> Format -> Drafter -> Verifier -> Refiner -> Overseer), shared contract drafting base with Indian Contract Act 1872 + Transfer of Property Act 1882 + Registration Act 1908 + Indian Stamp Act 1899 + Arbitration and Conciliation Act 1996 + DPDP Act 2023 discipline encoded.",
   "author": {
-    "name": "Wolfgang Rush",
+    "name": "wolfgang_rush",
     "url": "https://github.com/Wolfgangrush/indian-contracts-drafting-litigation"
   },
   "license": "MIT",

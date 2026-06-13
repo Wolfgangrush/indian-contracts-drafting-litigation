@@ -1,6 +1,6 @@
 # Privacy Policy
 
-The Wolfgang Rush plugin family — including this plugin — operates under a single, canonical privacy policy maintained at the publisher's marketplace repository.
+The wolfgang_rush plugin family — including this plugin — operates under a single, canonical privacy policy maintained at the publisher's marketplace repository.
 
 **Canonical Privacy Policy:**
 https://github.com/Wolfgangrush/wolfgang-rush-marketplace/blob/main/PRIVACY.md
@@ -19,6 +19,6 @@ Please refer to that document for the authoritative statement on data collection
 
 ---
 
-**Publisher:** Rushikesh R. Mahajan, publishing as Wolfgang Rush
+**Publisher:** Rushikesh R. Mahajan, publishing as wolfgang_rush
 **Contact:** advrushikeshravindramahajan@gmail.com
 **License:** MIT (see LICENSE in this repository)
