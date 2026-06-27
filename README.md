@@ -1,3 +1,19 @@
+<div align="center">
+<img src="docs/banner.png" width="820"/>
+<br/>
+<strong>Claude-compatible plugin for drafting Indian contracts, conveyancing instruments, and personal-estate documents.</strong>
+<br/>
+Visit the live site: <a href="https://wolfgangrush.github.io">wolfgangrush.github.io</a>
+<br/>
+<br/>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Claude Compatible](https://img.shields.io/badge/Claude-Compatible-8A2BE2)](https://claude.ai)
+[![Indian Law](https://img.shields.io/badge/Indian%20Law-Contracts%20%7C%20Conveyancing-FF6F00)](https://github.com/Wolfgangrush/indian-contracts-drafting-litigation)
+
+</div>
+
+
 # indian-contracts-drafting
 
 > **Open-source Claude-compatible plugin for drafting Indian contracts, conveyancing instruments, and personal-estate documents.**
